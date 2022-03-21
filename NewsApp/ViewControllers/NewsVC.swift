@@ -17,8 +17,7 @@ class NewsVC: UIViewController {
     }()
     
     let searchVC = UISearchController(searchResultsController: nil)
-    
-    var viewModels = [NewsTableViewCellViewModel]()
+
     var articles = [Article]()
     
     override func viewDidLoad() {
@@ -37,13 +36,7 @@ class NewsVC: UIViewController {
             switch result{
             case .success(let articles):
                 self?.articles = articles
-                self?.viewModels = articles.compactMap({
-                    NewsTableViewCellViewModel(
-                        title: $0.title,
-                        subtitle: $0.description ?? "No Description",
-                        imageURL: URL(string: $0.urlToImage ?? "https://picsum.photos/200/300")
-                    )
-                })
+           
                 // Once ViewModels are ready, table view should refresh
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
@@ -53,7 +46,7 @@ class NewsVC: UIViewController {
             }
         }
     }
-        //MARK: - ViewDidLayoutSubViews
+    //MARK: - ViewDidLayoutSubViews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds

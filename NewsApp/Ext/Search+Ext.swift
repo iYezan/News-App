@@ -23,14 +23,7 @@ extension NewsVC: UISearchBarDelegate{
             switch result{
             case .success(let articles):
                 self?.articles = articles
-                self?.viewModels = articles.compactMap({
-                    NewsTableViewCellViewModel(
-                        title: $0.title,
-                        subtitle: $0.description ?? "No Description",
-                        imageURL: URL(string: $0.urlToImage ?? "")
-                    )
-                    
-                })
+                
                 
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()

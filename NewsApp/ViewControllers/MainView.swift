@@ -12,7 +12,7 @@ class MainView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .red
-        self.addSubview(contentView)
+        self.addSubview(someImageView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -20,10 +20,16 @@ class MainView: UIView {
     }
     
     
-    let contentView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 500, height: 200))
-        view.layer.borderWidth = 0.5
-        view.layer.borderColor = UIColor.lightGray.cgColor
-        return view
+    let someImageView: UIImageView = {
+        let theImageView = UIImageView()
+               theImageView.image = UIImage(named: "gh-logo")
+        theImageView.frame  = CGRect(x: 50, y: 50, width: 10, height: 10)
+        theImageView.layer.cornerRadius = 6
+        theImageView.layer.masksToBounds = true
+        theImageView.backgroundColor = .red
+        theImageView.clipsToBounds = true
+        theImageView.contentMode = .scaleAspectFill
+        theImageView.translatesAutoresizingMaskIntoConstraints = false //You need to call this property so the image is added to your view
+        return theImageView
     }()
 }

@@ -50,7 +50,7 @@ final class NetworkManager {
     }
     
     // Function: searchWithText
-    public func search(with query: String, completion: @escaping (Result<[Article],Error>) -> Void){
+    public func search(with query: String, completion: @escaping (Result<[Article],Error>) -> Void) {
         guard !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             return
         }

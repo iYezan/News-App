@@ -21,7 +21,7 @@ class NBodyLabel: UILabel {
         init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
             super.init(frame: .zero)
             self.textAlignment = textAlignment
-            self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
+            self.font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
 
             configure()
         }
@@ -30,7 +30,7 @@ class NBodyLabel: UILabel {
             textColor                 = .secondaryLabel
             adjustsFontSizeToFitWidth = true
             minimumScaleFactor        = 0.90
-            numberOfLines = 0
+            numberOfLines             = 0
             translatesAutoresizingMaskIntoConstraints = false
         }
     }

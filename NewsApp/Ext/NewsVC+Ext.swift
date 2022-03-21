@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import SafariServices
 
 extension NewsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModels.count
+        return articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -19,7 +18,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
             for: indexPath) as? NewsTableViewCell else {
             fatalError()
         }
-        cell.configure(with: viewModels[indexPath.row])
+        cell.configure(with: articles[indexPath.row])
         return cell
     }
     
