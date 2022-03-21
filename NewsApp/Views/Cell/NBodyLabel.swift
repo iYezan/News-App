@@ -21,7 +21,7 @@ class NBodyLabel: UILabel {
         init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
             super.init(frame: .zero)
             self.textAlignment = textAlignment
-            self.font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
+            self.font = UIFont.systemFont(ofSize: fontSize, weight: .light)
 
             configure()
         }

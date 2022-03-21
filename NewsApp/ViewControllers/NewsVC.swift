@@ -22,13 +22,13 @@ class NewsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "News"
-        view.backgroundColor = .systemBackground
+
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
         fetchTopStories()
         createSearchBar()
+        setupNavigationController()
     }
     
     private func fetchTopStories () {
@@ -37,7 +37,6 @@ class NewsVC: UIViewController {
             case .success(let articles):
                 self?.articles = articles
            
-                // Once ViewModels are ready, table view should refresh
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
@@ -50,5 +49,16 @@ class NewsVC: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
+    }
+    
+    private func setupNavigationController() {
+        view.backgroundColor = .systemBackground
+
+        title = "News"
+        navigationController?.navigationBar.prefersLargeTitles  = true
+        navigationController?.navigationBar.backgroundColor     = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles  = true
+        navigationController?.hidesBarsOnSwipe                  = false
+        navigationItem.hidesSearchBarWhenScrolling              = false
     }
 }

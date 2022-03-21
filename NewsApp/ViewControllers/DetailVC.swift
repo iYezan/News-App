@@ -11,7 +11,7 @@ class DetailVC: UIViewController {
     
     // MARK: - Declarations
     let titleLabel          = NTitleLabel(textAlignment: .left, fontSize: 20)
-    let bodyLabel           = NBodyLabel(textAlignment: .left, fontSize: 18)
+    let bodyLabel           = NBodyLabel(textAlignment: .left, fontSize: 16)
     let logoImageView       = NewsImage(frame: .zero)
     
     
@@ -49,15 +49,14 @@ class DetailVC: UIViewController {
     }
     
     func configureWeatherLabel() {
-        
         view.addSubview(titleLabel)
         titleLabel.text = article?.title
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 50),
-            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
         ])
     }
     
@@ -69,9 +68,9 @@ class DetailVC: UIViewController {
         NSLayoutConstraint.activate([
             
             bodyLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 40),
-            bodyLabel.leadingAnchor.constraint(equalTo: titleLabel.safeAreaLayoutGuide.leadingAnchor),
-            bodyLabel.trailingAnchor.constraint(equalTo: titleLabel.safeAreaLayoutGuide.trailingAnchor),
-            bodyLabel.heightAnchor.constraint(equalToConstant: 250)
+            bodyLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            bodyLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            bodyLabel.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
 }

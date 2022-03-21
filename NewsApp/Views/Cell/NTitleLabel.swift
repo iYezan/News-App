@@ -28,7 +28,7 @@ class NTitleLabel: UILabel {
     private func configure() {
         textColor                   = .label
         adjustsFontSizeToFitWidth   = true
-        minimumScaleFactor          = 0.90
+        minimumScaleFactor          = 10
         numberOfLines = 0
         translatesAutoresizingMaskIntoConstraints   = false
     }
