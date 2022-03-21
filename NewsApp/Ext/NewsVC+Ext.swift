@@ -13,6 +13,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
         return articles.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell( withIdentifier: NewsTableViewCell.identifier,
             for: indexPath) as? NewsTableViewCell else {
