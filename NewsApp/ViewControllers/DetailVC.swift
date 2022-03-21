@@ -14,9 +14,7 @@ class DetailVC: UIViewController {
     let bodyLabel           = NBodyLabel(textAlignment: .left, fontSize: 16)
     let logoImageView       = NewsImage(frame: .zero)
     
-    
     var article: Article?
-    var viewModels = [NewsTableViewCell]()
     
     // MARK: - Initialisers
     

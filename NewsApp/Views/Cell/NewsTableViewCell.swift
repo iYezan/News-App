@@ -24,7 +24,7 @@ class NewsTableViewCell: UITableViewCell {
         titleLabel.text = viewModel.title
         bodyLabel.text = viewModel.description
  
-        avatarImageView.downloadImage(fromURL: (viewModel.urlToImage ?? "gh-logo"))
+        avatarImageView.downloadImage(fromURL: (viewModel.urlToImage ?? "placeholder"))
     }
 
     
@@ -48,7 +48,6 @@ class NewsTableViewCell: UITableViewCell {
         configureBodyLabel()
 
     }
-    
     
     func avatarImage() {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false

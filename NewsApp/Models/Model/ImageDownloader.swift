@@ -8,7 +8,6 @@
 import UIKit
 
 class ImageLoader {
-
     static let shared = ImageLoader() // singleton
     let cache = NSCache<NSString, UIImage>()
     
@@ -40,5 +39,4 @@ class ImageLoader {
         }
         task.resume()
     }
-
 }

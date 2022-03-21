@@ -100,8 +100,11 @@
 		2C7CABC827E5555D001D1A1B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2C7CABC927E55563001D1A1B /* Model */,
 				2C7CABBE27E55369001D1A1B /* APIResponse.swift */,
+				2CF0F15D27E8229400BCEB66 /* NAvatarImage.swift */,
+				2CF0F15F27E8264000BCEB66 /* NewsImageView.swift */,
+				2C7CABC027E5537A001D1A1B /* NetworkManager.swift */,
+				2C7CABC927E55563001D1A1B /* Model */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -109,10 +112,7 @@
 		2C7CABC927E55563001D1A1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2C7CABC027E5537A001D1A1B /* NetworkManager.swift */,
 				2CF0F15B27E81BBC00BCEB66 /* ImageDownloader.swift */,
-				2CF0F15D27E8229400BCEB66 /* NAvatarImage.swift */,
-				2CF0F15F27E8264000BCEB66 /* NewsImageView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
