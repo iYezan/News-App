@@ -9,11 +9,9 @@
 
 
 * Programmatic UI (No Storyboards).
-* Custom UIViews, custom TableViews and custom CollectionViews for user interface.
-* Widgets
-* The app use UserDefaults in order to save the amiibo collection.
+* Custom UIViews, custom TableViews for user interface.
 * MVC Design Pattern.
 * Custom UISearchBar.
-* Support for light & dark mode.
 * REST API.
-* Network Calls
+* Network Calls.
+* Support for light & dark mode.
