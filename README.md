@@ -16,5 +16,7 @@
 * Network Calls.
 * Support for light & dark mode.
 
+## How to build
+Clone the repository
 
 ```$ git clone https://github.com/iYezan/News-App.git```
