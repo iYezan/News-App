@@ -17,4 +17,4 @@
 * Support for light & dark mode.
 
 
-```$ git clone https://github.com/iYezan/ItunesPlus.git```
+```$ git clone https://github.com/iYezan/News-App.git```
