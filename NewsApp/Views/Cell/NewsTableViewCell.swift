@@ -19,7 +19,7 @@ class NewsTableViewCell: UITableViewCell {
     let padding: CGFloat          = 10
     
     //Configure each cell with a view Model
-    func configure(with viewModel: Article){
+    func set(with viewModel: Article){
         //Configure all the data here
         titleLabel.text = viewModel.title
         bodyLabel.text = viewModel.description

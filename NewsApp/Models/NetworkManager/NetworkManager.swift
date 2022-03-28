@@ -11,16 +11,17 @@ struct Secret {
     static let secretKey: String = "7f678d21f1c4472ebf3eaa7d7ae8abb9"
 }
 
+// Struct: Constants
+struct Constants {
+    static let topHeadlinesURL = URL(
+         string: "https://newsapi.org/v2/top-headlines?country=in&apiKey=\(Secret.secretKey)"
+    )
+    static let searchURLString =  "https://newsapi.org/v2/everything?sortBy=popularity&apiKey=\(Secret.secretKey)&q="
+}
+
 final class NetworkManager {
     static let shared = NetworkManager()
-    // Struct: Constants
-    struct Constants {
-        static let topHeadlinesURL = URL(
-             string: "https://newsapi.org/v2/top-headlines?country=in&apiKey=\(Secret.secretKey)"
-        )
-        static let searchURLString =  "https://newsapi.org/v2/everything?sortBy=popularity&apiKey=\(Secret.secretKey)&q="
-    }
-    
+
     private init() {}
     
     // Func: getTopStories
@@ -54,6 +55,7 @@ final class NetworkManager {
         guard !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             return
         }
+        
         let urlString = Constants.searchURLString + query
         guard  let url = URL(string: urlString) else {
             return

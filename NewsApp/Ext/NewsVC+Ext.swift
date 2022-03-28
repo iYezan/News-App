@@ -19,7 +19,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
             for: indexPath) as? NewsTableViewCell else {
             fatalError()
         }
-        cell.configure(with: articles[indexPath.row])
+        cell.set(with: articles[indexPath.row])
         return cell
     }
     

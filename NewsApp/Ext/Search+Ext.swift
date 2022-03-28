@@ -7,27 +7,13 @@
 
 import UIKit
 
-extension NewsVC: UISearchBarDelegate{
+extension NewsVC: UISearchBarDelegate {
     
     func createSearchBar(){
         navigationItem.searchController = searchVC
         searchVC.searchBar.delegate = self
     }
     
-    private func fetchTopStories () {
-        NetworkManager.shared.getTopStories { [weak self] result in
-            switch result{
-            case .success(let articles):
-                self?.articles = articles
-           
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
     //Search
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
