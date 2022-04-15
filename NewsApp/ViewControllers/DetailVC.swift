@@ -13,9 +13,7 @@ class DetailVC: UIViewController {
     let titleLabel          = NTitleLabel(textAlignment: .left, fontSize: 20)
     let bodyLabel           = NBodyLabel(textAlignment: .left, fontSize: 16)
     let logoImageView       = NewsImage(frame: .zero)
-    
-    let favoriteArticleKey =  "favoriteArticleKey"
-    
+        
     var article: Article?
     
     // MARK: - Initialisers
@@ -63,7 +61,7 @@ class DetailVC: UIViewController {
     
     func configureBodyLabel() {
         view.addSubview(bodyLabel)
-        bodyLabel.text  = article?.description
+        bodyLabel.text  = article?.descriptionTitle
         bodyLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -82,13 +80,33 @@ extension DetailVC {
     private func setupNavigationBarButtons() {
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleSaveFavorite)),
-            
             UIBarButtonItem(title: "Fetch", style: .plain, target: self, action: #selector(handlerFetchSavedFavoriteArticle))
         ]
     }
     
-    @objc fileprivate func handlerFetchSavedFavoriteArticle() { }
+    @objc fileprivate func handlerFetchSavedFavoriteArticle() {
+        print("Fetching info into UserDefaults")
+        
+        // how to retrieve  our Article object from UserDefaults
+        guard let data = UserDefaults.standard.data(forKey: UserDefaults.favoritedArticleKey) else { return }
+        let article = NSKeyedUnarchiver.unarchiveObject(with: data) as? Article
+        let savedArticles = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Article]
+        
+        savedArticles?.forEach({ (p) in
+            print(p.title ?? "")
+        })
+    }
     
-    @objc private func handleSaveFavorite() { }
-    
+    @objc private func handleSaveFavorite() {
+        print("Saving info into UserDefaults")
+
+        guard let article = self.article else { return }
+        
+        // 1. Transform Article into Data
+        var listOfArticles = UserDefaults.standard.savedArticles()
+        listOfArticles.append(article)
+        let  data = NSKeyedArchiver.archivedData(withRootObject: listOfArticles)
+        
+        UserDefaults.standard.set(data, forKey: UserDefaults.favoritedArticleKey)
+    }
 }

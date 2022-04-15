@@ -1,13 +1,13 @@
 //
-//  NewsTableViewCell.swift
+//  FavoriteTableViewCell.swift
 //  NewsApp
 //
-//  Created by iYezan on 18/03/2022.
+//  Created by iYezan on 15/04/2022.
 //
 
 import UIKit
 
-class NewsTableViewCell: UITableViewCell {
+class FavoriteTableViewCell: UITableViewCell {
     
     // MARK: - Declarations
     let titleLabel            = NTitleLabel(textAlignment: .left, fontSize: 20)
@@ -16,14 +16,16 @@ class NewsTableViewCell: UITableViewCell {
     
     static let identifier   = "NewsTableViewCell"
     
+    let mockdata = MockData.mockdata
+    let articles = UserDefaults.standard.savedArticles()
+    
     let padding: CGFloat          = 10
     
     //Configure each cell with a view Model
     func set(with viewModel: Article){
         //Configure all the data here
-        titleLabel.text = viewModel.title
-        bodyLabel.text = viewModel.descriptionTitle
- 
+        titleLabel.text       = viewModel.title
+        bodyLabel.text        = viewModel.descriptionTitle
         avatarImageView.downloadImage(fromURL: (viewModel.urlToImage ?? "placeholder"))
     }
 
@@ -53,10 +55,10 @@ class NewsTableViewCell: UITableViewCell {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            avatarImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 140),
-            avatarImageView.heightAnchor.constraint(equalToConstant: contentView.frame.size.height - 20),
+            avatarImageView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor),
+            avatarImageView.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor, constant: -40),
+            avatarImageView.widthAnchor.constraint(equalToConstant:70),
+            avatarImageView.heightAnchor.constraint(equalToConstant:70)
         ])
     }
     

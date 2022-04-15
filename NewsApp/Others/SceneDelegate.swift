@@ -18,30 +18,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
             window = UIWindow(frame: windowScene.coordinateSpace.bounds)
             window?.windowScene = windowScene
-            window?.rootViewController  = UINavigationController(rootViewController: NewsVC())
+            window?.rootViewController  = UINavigationController(rootViewController: createTabbar())
             window?.makeKeyAndVisible()
+            configureNavigationBar()
     }
-
-    func sceneDidDisconnect(_ scene: UIScene) {
-      
-    }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
     
+    func createSearchNavigationController() -> UINavigationController {
+        let searchVC        = NewsVC()
+        searchVC.title      = "Search"
+        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        
+        return  UINavigationController(rootViewController: searchVC)
+    }
+    
+    func createFavoritesNavigationController() -> UINavigationController {
+        let favoritesListVC             = FavoriteTableViewController()
+        favoritesListVC.title           = "Favorites"
+        favoritesListVC.tabBarItem      = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        
+        return  UINavigationController(rootViewController: favoritesListVC)
     }
 
-    func sceneWillResignActive(_ scene: UIScene) {
-
+    func createTabbar() -> UITabBarController  {
+        let tabbar      = UITabBarController()
+        UITabBar.appearance().tintColor = .systemGreen
+        tabbar.viewControllers          = [createSearchNavigationController(), createFavoritesNavigationController()]
+        
+        return  tabbar
     }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-
+    
+    func configureNavigationBar() {
+        UINavigationBar.appearance().tintColor  = .systemGreen
     }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-
-    }
-
-
 }
 
