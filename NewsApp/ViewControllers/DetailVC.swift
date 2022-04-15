@@ -14,6 +14,8 @@ class DetailVC: UIViewController {
     let bodyLabel           = NBodyLabel(textAlignment: .left, fontSize: 16)
     let logoImageView       = NewsImage(frame: .zero)
     
+    let favoriteArticleKey =  "favoriteArticleKey"
+    
     var article: Article?
     
     // MARK: - Initialisers
@@ -26,6 +28,7 @@ class DetailVC: UIViewController {
         configureLogoImage()
         configureWeatherLabel()
         configureBodyLabel()
+        setupNavigationBarButtons()
         
     }
     // MARK: - Layout configrations
@@ -36,7 +39,7 @@ class DetailVC: UIViewController {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
         logoImageView.downloadImage(fromURL: (article?.urlToImage)!)
-
+        
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             logoImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -71,4 +74,21 @@ class DetailVC: UIViewController {
             bodyLabel.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
+}
+
+
+extension DetailVC {
+    
+    private func setupNavigationBarButtons() {
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleSaveFavorite)),
+            
+            UIBarButtonItem(title: "Fetch", style: .plain, target: self, action: #selector(handlerFetchSavedFavoriteArticle))
+        ]
+    }
+    
+    @objc fileprivate func handlerFetchSavedFavoriteArticle() { }
+    
+    @objc private func handleSaveFavorite() { }
+    
 }

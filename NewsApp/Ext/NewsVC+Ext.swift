@@ -26,9 +26,11 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let vc =  DetailVC()
-        vc.article = articles[indexPath.row]
-        present(vc,animated: true)
+        let nextVC = DetailVC()
+        nextVC.article = articles[indexPath.row]
+
+        // Push to next view
+        navigationController?.pushViewController(nextVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
